@@ -6,7 +6,7 @@
 
   访问[官网地址](https://www.sonatype.com/download-oss-sonatype) https://www.sonatype.com/download-oss-sonatype，需要填写一些个人信息，本文在Centos下进行安装，所以下载UNIX版本。
 
-![image-20221101224241084](/Users/guoyang/work/nexus/img/image-20221101224241084.png)
+![image-20221101224241084](./img/image-20221101224241084.png)
 
 ### 安装
 
@@ -55,7 +55,7 @@ Started Sonatype Nexus OSS 3.42.0-01
 
 访问nexus: http://localhost:8081/
 
-![image-20221101232845128](/Users/guoyang/work/nexus/img/image-20221101232845128.png)
+![image-20221101232845128](./img/image-20221101232845128.png)
 
 
 
@@ -67,7 +67,7 @@ Started Sonatype Nexus OSS 3.42.0-01
 
 进入Browse页面查看当的仓库信息
 
-![image-20221101234713805](/Users/guoyang/work/nexus/img/image-20221101234713805.png)
+![image-20221101234713805](./img/image-20221101234713805.png)
 
 默认仓库说明
 
@@ -91,16 +91,16 @@ Started Sonatype Nexus OSS 3.42.0-01
 
 1. create repostory
 
-![image-20221101235657183](/Users/guoyang/work/nexus/img/image-20221101235657183.png)
+![image-20221101235657183](./img/image-20221101235657183.png)
 
 2. 选择maven2(proxy)
 
-![image-20221101235803096](/Users/guoyang/work/nexus/img/image-20221101235803096.png)
+![image-20221101235803096](./img/image-20221101235803096.png)
 
 3. Name 填写 aliyun, URL输入：http://maven.aliyun.com/nexus/content/groups/public/
 
-![image-20221102000129836](/Users/guoyang/work/nexus/img/image-20221102000129836.png)
+![image-20221102000129836](./img/image-20221102000129836.png)
 
 4. 选择Configuration > Repository, 双击 maven-public, 在Group区域将aliyun移到右侧Members, 上移到maven-central的上面, 点击 Save。
 
-   ![image-20221102000346240](/Users/guoyang/work/nexus/img/image-20221102000346240.png)
+   ![image-20221102000346240](./img/image-20221102000346240.png)
