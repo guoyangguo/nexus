@@ -104,3 +104,67 @@ Started Sonatype Nexus OSS 3.42.0-01
 4. 选择Configuration > Repository, 双击 maven-public, 在Group区域将aliyun移到右侧Members, 上移到maven-central的上面, 点击 Save。
 
    ![image-20221102000346240](./img/image-20221102000346240.png)
+
+## 在Maven项目中使用私服
+
+1. 配置maven setting.xml
+
+   在maven的setting.xml中添加私服的认证信息，用户名/密码换成自己设置的
+
+   ```xml
+       <server>
+         <id>nexus-releases</id>
+         <username>admin</username>
+         <password>admin</password>
+       </server>
+       <server>
+         <id>nexus-snapshots</id>
+         <username>admin</username>
+         <password>admin</password>
+       </server>
+   ```
+
+2. 在项目的pom.xml文件中添加repositories信息，配置如下
+
+   ```xml
+   <repositories>
+           <repository>
+               <id>nexus</id>
+               <name>Nexus Repository</name>
+               <url>http://127.0.0.1:8081/repository/maven-public/</url>
+               <releases>
+                   <enabled>true</enabled>
+               </releases>
+               <snapshots>
+                   <enabled>true</enabled>
+               </snapshots>
+           </repository>
+       </repositories>
+   
+       <distributionManagement>
+           <repository>
+               <id>nexus-releases</id>
+               <name>nexus-releases</name>
+               <url>http://127.0.0.1:8081/repository/maven-releases</url>
+           </repository>
+           <snapshotRepository>
+               <id>nexus-snapshots</id>
+               <name>nexus-snapshots</name>
+               <url>http://127.0.0.1:8081/repository/maven-snapshots</url>
+           </snapshotRepository>
+       </distributionManagement>
+   ```
+
+   repositorie中配置私服的远程仓库地址
+
+   distributionManagement中配置打包发布上传的仓库信息，这里需要**注意repository里的id需要和maven中setting.xml里的server id名称保持一致**
+
+3. 将项目打包发布到私服
+
+     在IDEA中选择右侧的 **Lifecycle -> deploy**，如果verison中带有**SNAPSHOT**，那么jar将会上传到SNAPSHOT仓库中，否则上传到RELEASES仓库中。
+
+   ![image-20221102222534434](./img/image-20221102222534434.png)
+   
+   ![image-20221102224901938](./img/image-20221102224901938.png)
+
+> 项目地址: [maven-nexus-repo-demo](https://github.com/guoyangguo/nexus/tree/main/maven-nexus-repo-demo)
